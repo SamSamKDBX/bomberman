@@ -9,17 +9,46 @@ on:
 
 jobs:
 
-  export-and-deploy:
+ export-and-deploy:
     name: Export Web & Push to Itch.io
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:4.6.3
+      image: barichello/godot-ci:4.7.2
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          lfs: true           # Downloads binary assets (textures/audio)
+
+      - name: Pre-Import Assets
+        run: godot --headless --editor --quit || true
+
+      - name: Inject Git Tag into project.godot
+        shell: bash
+        run: |
+          # Stamps the tag string directly into project.godot for this export
+          BUILD_VERSION="${GITHUB_REF_NAME}"
+          sed -i 's/config\/version=.*/config\/version="'"$BUILD_VERSION"'"/' project.godot
+
+      - name: Setup Export Templates
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates
+          mv /root/.local/share/godot/export_templates/4.7.2.stable ~/.local/share/godot/export_templates/4.7.2.stable
 
       - name: Build Web Export
         run: |
           mkdir -v -p build/web
           godot --headless --export-release "Web" build/web/index.html
+
+      - name: Deploy to Itch.io via Butler
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
+          ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
+          ITCH_GAME: ${{ secrets.ITCHIO_GAME_SLUG }}
+        run: |
+          apt-get update && apt-get install -y curl unzip
+          curl -L -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          chmod +x butler
+          ./butler push build/web $ITCH_USER/$ITCH_GAME:web
