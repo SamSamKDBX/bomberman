@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://e8kfwotlh628"]
+
+[ext_resource type="Script" uid="uid://co1cqcgk44gvh" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dkgvm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_c6mop"]
+height = 1.4936523
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=1844585629]
+transform = Transform3D(0.9999219, 0.0066082245, -0.010604443, 0.010843372, -0.037235472, 0.9992477, 0.0062083914, -0.9992847, -0.037304223, 0, 0, 0)
+gravity_scale = 0.0
+script = ExtResource("1_4flbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=60878069]
+transform = Transform3D(0.999922, 0.010843372, 0.006208393, 0.0066082245, -0.037235472, -0.9992848, -0.010604444, 0.99924767, -0.03730423, 0.073708415, 0.0808301, -2.96697)
+mesh = SubResource("CapsuleMesh_dkgvm")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1258913291]
+transform = Transform3D(1, 0, -7.2759576e-10, 0, 1, 0, -7.1304385e-10, 3.7252903e-09, 1, 0, 0, 0)
+visible = false
+fov = 94.2
+near = 0.025
+far = 3997.15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1384208543]
+transform = Transform3D(0.9998451, -0.0040504867, -0.017124915, 0.017157601, 0.008237692, 0.99983126, -0.0039089466, -0.9999659, 0.008306885, 0.07478058, 0.07670164, -2.8724174)
+shape = SubResource("CylinderShape3D_c6mop")
