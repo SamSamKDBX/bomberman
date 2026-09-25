@@ -6,7 +6,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 
-[node name="Wall" type="StaticBody3D" unique_id=1452162110]
+[node name="Wall" type="StaticBody3D" unique_id=1452162110 groups=["wall"]]
 physics_material_override = SubResource("PhysicsMaterial_ig7tw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2105217060]

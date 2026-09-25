@@ -244,15 +244,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0.55, 7.5)
 [node name="Wall76" parent="ExternalWalls" unique_id=668885868 instance=ExtResource("2_5n5go")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0.55, 8.5)
 
-[node name="Ground" type="StaticBody3D" parent="." unique_id=1115771555]
-physics_material_override = SubResource("PhysicsMaterial_7dm0k")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1747671367]
-mesh = SubResource("BoxMesh_7dm0k")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=2076897011]
-shape = SubResource("BoxShape3D_0xm2m")
-
 [node name="InternalWalls" type="Node3D" parent="." unique_id=1846444837]
 
 [node name="Wall2" parent="InternalWalls" unique_id=244634899 instance=ExtResource("2_5n5go")]
@@ -446,3 +437,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.55, -7.5)
 
 [node name="Wall65" parent="InternalWalls" unique_id=1190561109 instance=ExtResource("2_5n5go")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.55, 1.5)
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1115771555]
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1747671367]
+mesh = SubResource("BoxMesh_7dm0k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=2076897011]
+shape = SubResource("BoxShape3D_0xm2m")
