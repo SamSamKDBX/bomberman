@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c81rq0ehsndeg"]
+[gd_scene format=3 uid="uid://3kq7foistpor"]
 
 [ext_resource type="Script" uid="uid://bwuy3pr7000at" path="res://player_2.gd" id="1_i25i0"]
 
@@ -7,6 +7,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i25i0"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=259402759]
+transform = Transform3D(-0.012775475, 0, 0.9999184, 0, 1, 0, -0.9999184, 0, -0.012775475, 0, 0, 0)
 motion_mode = 1
 script = ExtResource("1_i25i0")
 
