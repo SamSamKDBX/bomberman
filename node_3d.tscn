@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://cradayk32r2kw"]
 
-[ext_resource type="PackedScene" uid="uid://e8kfwotlh628" path="res://player.tscn" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://c81rq0ehsndeg" path="res://player2.tscn" id="1_a202f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4xowi"]
 size = Vector3(6.055664, 1.5683594, 8.118286)
 
 [sub_resource type="Skin" id="Skin_a202f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
+size = Vector3(10.378174, 1, 11.936523)
 
 [node name="Node3D" type="Node3D" unique_id=1665054990]
 
@@ -14,11 +17,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5483801, -0.16086507, 3.725
 mesh = SubResource("BoxMesh_4xowi")
 skin = SubResource("Skin_a202f")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D" unique_id=132479343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2894528, -0.046249628, 1.3676891)
+shape = SubResource("BoxShape3D_a202f")
+
+[node name="CharacterBody3D" parent="." unique_id=259402759 instance=ExtResource("1_a202f")]
+transform = Transform3D(1, 0, 0, 0, 0.99991524, -0.013021588, 0, 0.013021588, 0.99991524, 2.2261848, 1.7641089, 6.1032314)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=60110554]
 transform = Transform3D(1, 0, 0, 0, -0.49630806, 0.8681465, 0, -0.8681465, -0.49630806, 0, 0, 0)
-
-[node name="RigidBody3D" parent="." unique_id=1844585629 instance=ExtResource("1_a202f")]
-transform = Transform3D(0.999922, 0.0066082776, -0.01060416, 0.010843085, -0.03723448, 0.9992477, 0.0062084794, -0.99928474, -0.03730323, 1.8366208, 4.6441174, 2.3537264)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1663265229]
-transform = Transform3D(-0.629816, 0, -0.77674437, 0, 1, 0, 0.77674437, 0, -0.629816, 4.7683716e-07, 3.161437, 2.454079)
