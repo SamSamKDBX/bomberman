@@ -18,7 +18,12 @@ func _take_damage():
 func _death():
 	if get_tree().get_nodes_in_group("enemy").is_empty():
 		_winning()
+	elif root.is_in_group("player"):
+		_loosing()
 	root.queue_free()
 	
+func _loosing():
+	get_tree().change_scene_to_file("res://scenes/loosing_menu/loosing_menu.tscn")
+
 func _winning():
-	pass
+	get_tree().change_scene_to_file("res://scenes/winning_menu/winning_menu.tscn")
