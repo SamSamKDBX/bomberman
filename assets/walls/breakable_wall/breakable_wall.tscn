@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dsp45hc7fgecx"]
+
+[ext_resource type="PackedScene" uid="uid://6ilqkjpnvh4f" path="res://assets/walls/normal_wall/normal_wall.tscn" id="1_qfrfa"]
+[ext_resource type="Script" uid="uid://mykgxswhsvhv" path="res://scripts/damage_control.gd" id="2_joyu1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7giyn"]
+load_path = "res://.godot/imported/Dungeon_Wall_Albedo.jpg-43ec9a7755079c5b819f669c585ce590.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biq76"]
+albedo_color = Color(1, 0.30588236, 0.3137255, 1)
+albedo_texture = SubResource("CompressedTexture2D_7giyn")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_joyu1"]
+size = Vector3(1.1, 1, 1.1)
+
+[node name="BreakableWall" unique_id=1452162110 instance=ExtResource("1_qfrfa")]
+
+[node name="Cube" parent="wall" parent_id_path=PackedInt32Array(930696903) index="0" unique_id=1527104214]
+surface_material_override/0 = SubResource("StandardMaterial3D_biq76")
+
+[node name="DamageControl" type="Node" parent="." index="2" unique_id=441563787 node_paths=PackedStringArray("root")]
+script = ExtResource("2_joyu1")
+root = NodePath("..")
+dangerousGroups = Array[String](["bomb"])
+
+[node name="Area3D" type="Area3D" parent="." index="3" unique_id=1565976039]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1118571323]
+shape = SubResource("BoxShape3D_joyu1")
+
+[connection signal="body_entered" from="Area3D" to="DamageControl" method="_on_area_3d_body_entered"]
+
+[editable path="wall"]

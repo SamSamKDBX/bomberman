@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b630r6qv8jt7h"]
+
+[ext_resource type="Texture2D" uid="uid://k40c4sducplj" path="res://scenes/loosing_menu/explosion.jpg" id="1_outy4"]
+[ext_resource type="Script" uid="uid://gexx81lm7hl5" path="res://scripts/menu_control.gd" id="2_23ce0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_outy4"]
+font_size = 60
+
+[node name="LoosingMenu" type="Control" unique_id=2123261137]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1466827464]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_outy4")
+expand_mode = 1
+
+[node name="Mask" type="ColorRect" parent="." unique_id=528976029]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4117647)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Mask" unique_id=340488172]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -63.0
+offset_right = 108.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MainTitle" type="Label" parent="Mask/VBoxContainer" unique_id=857818568]
+layout_mode = 2
+text = "Perdu !"
+label_settings = SubResource("LabelSettings_outy4")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Mask/VBoxContainer" unique_id=62017362]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Mask/VBoxContainer" unique_id=1355461278]
+layout_mode = 2
+text = "Jouer"
+
+[node name="MenuControl" type="Node" parent="." unique_id=433951499]
+script = ExtResource("2_23ce0")
+
+[connection signal="pressed" from="Mask/VBoxContainer/PlayButton" to="MenuControl" method="_on_play_button_pressed"]

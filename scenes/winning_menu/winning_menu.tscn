@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cvvei32577fot"]
+
+[ext_resource type="Texture2D" uid="uid://qiiv6wipm2lw" path="res://scenes/winning_menu/bomberman.jpg" id="1_6le4n"]
+[ext_resource type="Script" uid="uid://gexx81lm7hl5" path="res://scripts/menu_control.gd" id="2_a646x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_apj1e"]
+font_size = 60
+
+[node name="WinningMenu" type="Control" unique_id=222691017]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=1065260571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.271545
+offset_right = 8.271484
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6le4n")
+expand_mode = 3
+
+[node name="Mask" type="ColorRect" parent="." unique_id=1348249442]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4117647)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Mask" unique_id=1322846407]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -63.0
+offset_right = 108.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MainTitle" type="Label" parent="Mask/VBoxContainer" unique_id=1973310851]
+layout_mode = 2
+text = "Gagné !"
+label_settings = SubResource("LabelSettings_apj1e")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Mask/VBoxContainer" unique_id=1326756584]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Mask/VBoxContainer" unique_id=335994225]
+layout_mode = 2
+text = "Jouer"
+
+[node name="MenuControl" type="Node" parent="." unique_id=691985466]
+script = ExtResource("2_a646x")
+
+[connection signal="pressed" from="Mask/VBoxContainer/PlayButton" to="MenuControl" method="_on_play_button_pressed"]
