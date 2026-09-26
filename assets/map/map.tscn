@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cg8goaa6txg5v"]
 
 [ext_resource type="PackedScene" uid="uid://6ilqkjpnvh4f" path="res://assets/walls/normal_wall/normal_wall.tscn" id="2_5n5go"]
+[ext_resource type="PackedScene" uid="uid://dsp45hc7fgecx" path="res://assets/walls/breakable_wall/breakable_wall.tscn" id="2_yyc58"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
 size = Vector3(19, 0.1, 19)
@@ -456,6 +457,68 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.55, 0)
 
 [node name="Wall8" parent="InternalWalls/Range8" unique_id=633523760 instance=ExtResource("2_5n5go")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.55, 0)
+
+[node name="BreakableWalls" type="Node3D" parent="." unique_id=662728135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.55, 0)
+
+[node name="BreakableWall" parent="BreakableWalls" unique_id=1394975692 instance=ExtResource("2_yyc58")]
+
+[node name="BreakableWall2" parent="BreakableWalls" unique_id=1818493509 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="BreakableWall3" parent="BreakableWalls" unique_id=879915839 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="BreakableWall4" parent="BreakableWalls" unique_id=603123486 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+
+[node name="BreakableWall5" parent="BreakableWalls" unique_id=25638792 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+
+[node name="BreakableWall6" parent="BreakableWalls" unique_id=934330399 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="BreakableWall7" parent="BreakableWalls" unique_id=386246229 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+
+[node name="BreakableWall8" parent="BreakableWalls" unique_id=876397390 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+
+[node name="BreakableWall9" parent="BreakableWalls" unique_id=327070803 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
+
+[node name="BreakableWall10" parent="BreakableWalls" unique_id=693555113 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
+
+[node name="BreakableWall11" parent="BreakableWalls" unique_id=793003611 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -1)
+
+[node name="BreakableWall12" parent="BreakableWalls" unique_id=527127669 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 3)
+
+[node name="BreakableWall13" parent="BreakableWalls" unique_id=1432788339 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="BreakableWall14" parent="BreakableWalls" unique_id=127475327 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
+
+[node name="BreakableWall15" parent="BreakableWalls" unique_id=419092351 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
+
+[node name="BreakableWall16" parent="BreakableWalls" unique_id=188516833 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
+
+[node name="BreakableWall17" parent="BreakableWalls" unique_id=650625592 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 1)
+
+[node name="BreakableWall18" parent="BreakableWalls" unique_id=1240629991 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 5)
+
+[node name="BreakableWall19" parent="BreakableWalls" unique_id=1250416709 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 7)
+
+[node name="BreakableWall20" parent="BreakableWalls" unique_id=968145663 instance=ExtResource("2_yyc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1115771555]
 
