@@ -9,6 +9,5 @@ transform = Transform3D(1, 0, 0, 0, 0.9443247, 0.329015, 0, -0.329015, 0.9443247
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=792815881]
 transform = Transform3D(1, 0, 0, 0, 0.6558219, 0.75491565, 0, -0.75491565, 0.6558219, 0, 4.731079, 3.7785087)
-visible = false
 
 [node name="Map" parent="." unique_id=2044439977 instance=ExtResource("1_ig7tw")]
