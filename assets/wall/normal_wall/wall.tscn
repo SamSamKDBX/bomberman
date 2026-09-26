@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://baueye8a5wili"]
+[gd_scene format=3 uid="uid://6ilqkjpnvh4f"]
 
-[ext_resource type="PackedScene" uid="uid://b6gsul557up4t" path="res://assets/wall/wall_mesh.tscn" id="1_6ohlr"]
+[ext_resource type="PackedScene" uid="uid://dbyn4y6qvt778" path="res://assets/wall/models/normale_wall_mesh.tscn" id="1_6ohlr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
 

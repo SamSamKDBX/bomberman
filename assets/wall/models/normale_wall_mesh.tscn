@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dbyn4y6qvt778"]
+
+[ext_resource type="PackedScene" uid="uid://8s53i2p2vrl2" path="res://assets/wall/wall.glb" id="1_ctsxn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7giyn"]
+load_path = "res://.godot/imported/Dungeon_Wall_Albedo.jpg-43ec9a7755079c5b819f669c585ce590.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75d17"]
+albedo_texture = SubResource("CompressedTexture2D_7giyn")
+uv1_scale = Vector3(2, 2, 2)
+
+[node name="wall" unique_id=930696903 instance=ExtResource("1_ctsxn")]
+
+[node name="Cube" parent="." index="0" unique_id=1019103765]
+surface_material_override/0 = SubResource("StandardMaterial3D_75d17")
