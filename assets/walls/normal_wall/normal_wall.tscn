@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://6ilqkjpnvh4f"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dbyn4y6qvt778" path="res://assets/walls/normal_wall/normal_wall_mesh.tscn" id="1_6ohlr"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 
 [node name="Wall" type="StaticBody3D" unique_id=1452162110 groups=["wall"]]
 physics_material_override = SubResource("PhysicsMaterial_ig7tw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2105217060]
-mesh = SubResource("BoxMesh_0xm2m")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=435630612]
 shape = SubResource("BoxShape3D_h2yge")
+
+[node name="wall" parent="." unique_id=930696903 instance=ExtResource("1_6ohlr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
