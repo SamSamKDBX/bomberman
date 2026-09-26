@@ -17,7 +17,7 @@ light_energy = 1.713
 [node name="Enemies" type="Node3D" parent="." unique_id=1713599154]
 
 [node name="Enemy" parent="Enemies" unique_id=267945766 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.015518, 0.5709889, 4.015256)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.015518, 0.5709889, 6.015256)
 
 [node name="Enemy2" parent="Enemies" unique_id=181053118 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0388188, 0.5709889, 4.015256)
