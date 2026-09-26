@@ -3,7 +3,6 @@ extends Node
 @export var body: CharacterBody3D
 @export var speed: int = 1
 @export var timer: Timer
-@export var ray_cast: RayCast3D
 @export var eyes: MeshInstance3D
 
 var rng = RandomNumberGenerator.new()
