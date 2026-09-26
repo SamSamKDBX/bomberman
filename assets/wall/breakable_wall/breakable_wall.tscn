@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://bdtjbqbsd3wsj"]
-
-[ext_resource type="PackedScene" uid="uid://6ilqkjpnvh4f" path="res://assets/wall/wall.tscn" id="1_qfrfa"]
-
-[node name="BreakableWall" unique_id=1452162110 instance=ExtResource("1_qfrfa")]

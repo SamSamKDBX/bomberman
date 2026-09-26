@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cg8goaa6txg5v"]
 
 [ext_resource type="Script" uid="uid://dur22uvla8ujy" path="res://assets/map/map.gd" id="1_yyc58"]
-[ext_resource type="PackedScene" uid="uid://6ilqkjpnvh4f" path="res://assets/wall/wall.tscn" id="2_5n5go"]
+[ext_resource type="PackedScene" uid="uid://baueye8a5wili" path="res://assets/walls/wall.tscn" id="2_5n5go"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
