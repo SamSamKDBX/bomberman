@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbyn4y6qvt778"]
 
-[ext_resource type="PackedScene" uid="uid://8s53i2p2vrl2" path="res://assets/wall/wall.glb" id="1_ctsxn"]
+[ext_resource type="PackedScene" uid="uid://brb8ryxrkhe4j" path="res://assets/walls/models/wall.glb" id="1_ctsxn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7giyn"]
 load_path = "res://.godot/imported/Dungeon_Wall_Albedo.jpg-43ec9a7755079c5b819f669c585ce590.s3tc.ctex"
