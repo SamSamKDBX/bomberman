@@ -39,9 +39,9 @@ shape = SubResource("SphereShape3D_4nxta")
 
 [node name="Controls" type="Node" parent="." unique_id=45214276]
 
-[node name="DamageControl" type="Node" parent="Controls" unique_id=1757132338 node_paths=PackedStringArray("body")]
+[node name="DamageControl" type="Node" parent="Controls" unique_id=1757132338]
 script = ExtResource("2_4nxta")
-body = NodePath("../..")
+dangerousGroups = Array[String](["bomb"])
 
 [node name="EnemyControl" type="Node" parent="Controls" unique_id=1606153514 node_paths=PackedStringArray("body", "timer", "eyes")]
 script = ExtResource("1_hx8jw")
