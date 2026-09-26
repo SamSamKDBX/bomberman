@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c4b1rc3eb7dk5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4xowi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c6mop"]
+
+[node name="Node3D" type="Node3D" unique_id=1665054990]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=607989154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020548105, 0.12331462, 0.16629791)
+mesh = SubResource("BoxMesh_4xowi")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1386977386]
+transform = Transform3D(0.9999219, 0.0066082245, -0.010604447, -0.006420962, 0.9998245, 0.017596833, 0.01071887, -0.017527368, 0.99978894, -0.10538018, 1.0313606, 2.5486257)
+fov = 63.5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=60110554]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1248969508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17423844, 0.98211014, -0.8316364)
+mesh = SubResource("SphereMesh_c6mop")
