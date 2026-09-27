@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3kq7foistpor"]
 
 [ext_resource type="Script" uid="uid://bwuy3pr7000at" path="res://assets/player/player.gd" id="1_i25i0"]
+[ext_resource type="Script" uid="uid://mykgxswhsvhv" path="res://scripts/damage_control.gd" id="2_h6syq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dkgvm"]
 
@@ -19,3 +20,8 @@ mesh = SubResource("CapsuleMesh_dkgvm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=435601228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.714694, 1.0147004, -0.34894726)
 shape = SubResource("CapsuleShape3D_i25i0")
+
+[node name="Control" type="Node" parent="." unique_id=1221506887]
+
+[node name="DamageControl" type="Node" parent="Control" unique_id=279955163]
+script = ExtResource("2_h6syq")

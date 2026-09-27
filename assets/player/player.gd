@@ -5,7 +5,6 @@ const SPEED = 1.0
 var step: int = 1
 
 func _physics_process(delta: float) -> void:
-	
 	if Input.is_action_just_pressed("p1_left"):		
 		velocity.x = (-1) * SPEED
 		position.x = position.x - step

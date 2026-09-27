@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://r5c43yam8pug"]
 
+[ext_resource type="Script" uid="uid://bbgonrras4v6g" path="res://assets/camera.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cg8goaa6txg5v" path="res://assets/map/map.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://biy61apgnwise" path="res://assets/enemy/enemy.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://3kq7foistpor" path="res://assets/player/player.tscn" id="2_h2yge"]
@@ -7,7 +8,9 @@
 [node name="Main" type="Node3D" unique_id=1620750783]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=587930977]
-transform = Transform3D(1, 0, 0, 0, 0.54163486, 0.8406139, 0, -0.8406139, 0.54163486, 0, 9.469761, 9.393212)
+transform = Transform3D(1, 0, 0, 0, 0.54163486, 0.8406139, 0, -0.8406139, 0.54163486, 0, 6.554222, 3.996492)
+fov = 65.0
+script = ExtResource("1_1bvp3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=792815881]
 transform = Transform3D(1, 0, 0, 0, 0.6558219, 0.75491565, 0, -0.75491565, 0.6558219, 0, 4.731079, 3.7785087)
@@ -16,6 +19,7 @@ light_energy = 1.713
 [node name="Map" parent="." unique_id=2044439977 instance=ExtResource("1_ig7tw")]
 
 [node name="CharacterBody3D" parent="." unique_id=259402759 instance=ExtResource("2_h2yge")]
+transform = Transform3D(-0.012775475, 0, 0.9999184, 0, 1, 0, -0.9999184, 0, -0.012775475, 0.40787494, -0.17084396, 0.49720132)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1713599154]
 
