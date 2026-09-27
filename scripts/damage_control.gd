@@ -3,6 +3,7 @@ extends Node
 @export var root: Node3D
 @export var dangerousGroups: Array[String]
 @export var hp: int = 1
+signal death
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	for dangerousGroup in dangerousGroups:
@@ -20,6 +21,7 @@ func _death():
 		_winning()
 	elif root.is_in_group("player"):
 		_loosing()
+	death.emit()
 	root.queue_free()
 	
 func _loosing():
