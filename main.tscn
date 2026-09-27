@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cg8goaa6txg5v" path="res://assets/map/map.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://biy61apgnwise" path="res://assets/enemy/enemy.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://3kq7foistpor" path="res://assets/player/player.tscn" id="2_h2yge"]
 
 [node name="Main" type="Node3D" unique_id=1620750783]
 
@@ -13,6 +14,8 @@ transform = Transform3D(1, 0, 0, 0, 0.6558219, 0.75491565, 0, -0.75491565, 0.655
 light_energy = 1.713
 
 [node name="Map" parent="." unique_id=2044439977 instance=ExtResource("1_ig7tw")]
+
+[node name="CharacterBody3D" parent="." unique_id=259402759 instance=ExtResource("2_h2yge")]
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1713599154]
 
