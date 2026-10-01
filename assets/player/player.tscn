@@ -9,6 +9,12 @@ height = 0.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_h6syq"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_v2miy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ouxva"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d5dr7"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i25i0"]
 radius = 0.25872993
 height = 0.51745987
@@ -22,9 +28,21 @@ transform = Transform3D(0.99999976, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000002, 0, 0
 [node name="body" type="MeshInstance3D" parent="Node3D" unique_id=397457242]
 mesh = SubResource("CapsuleMesh_dkgvm")
 
-[node name="ray" type="MeshInstance3D" parent="Node3D" unique_id=1042598455]
-transform = Transform3D(-1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, 0, 0.3, 0.4088987, 0, 0)
+[node name="ray_north" type="MeshInstance3D" parent="Node3D" unique_id=1042598455]
+transform = Transform3D(-1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, 0, 0.3, 0.3, 0, 0)
 mesh = SubResource("CylinderMesh_h6syq")
+
+[node name="ray_south" type="MeshInstance3D" parent="Node3D" unique_id=851391943]
+transform = Transform3D(-1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, 0, 0.3, -0.3, 0, 0)
+mesh = SubResource("CylinderMesh_v2miy")
+
+[node name="ray_east" type="MeshInstance3D" parent="Node3D" unique_id=1959979434]
+transform = Transform3D(0.3, 0, 0, 0, -1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, 0.3)
+mesh = SubResource("CylinderMesh_ouxva")
+
+[node name="ray_west" type="MeshInstance3D" parent="Node3D" unique_id=1624344582]
+transform = Transform3D(0.3, 0, 0, 0, -1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, -0.3)
+mesh = SubResource("CylinderMesh_d5dr7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=435601228]
 shape = SubResource("CapsuleShape3D_i25i0")
@@ -34,6 +52,7 @@ shape = SubResource("CapsuleShape3D_i25i0")
 [node name="DamageControl" type="Node" parent="Control" unique_id=279955163]
 script = ExtResource("2_h6syq")
 
-[node name="PlayerControl" type="Node" parent="Control" unique_id=191758333 node_paths=PackedStringArray("body")]
+[node name="PlayerControl" type="Node" parent="Control" unique_id=191758333 node_paths=PackedStringArray("body", "ray_north")]
 script = ExtResource("1_i25i0")
 body = NodePath("../..")
+ray_north = NodePath("../../Node3D/ray_north")

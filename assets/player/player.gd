@@ -3,6 +3,7 @@ extends Node
 
 @export var body: CharacterBody3D
 @export var speed: int = 4
+@export var ray_north: MeshInstance3D
 
 
 
@@ -35,12 +36,10 @@ func _physics_process(delta: float) -> void:
 		
 		if is_equal_approx(body.position.x, nextStop.x):
 			# Calculer la nouvelle direction
-		
 			change_direction()
 	elif orientation[0] == "z":
 		if is_equal_approx(body.position.z, nextStop.z):
 			# Calculer la nouvelle direction
-			
 			change_direction()
 
 
@@ -68,6 +67,7 @@ func change_direction():
 		nextStop.z = body.position.z + step
 		orientation = "z+"
 	elif Input.is_action_just_pressed("p1_forward"):
+		print("try forward")
 		nextStop = Vector3.ZERO
 		body.velocity.z = -speed
 		nextStop.z = body.position.z - step
