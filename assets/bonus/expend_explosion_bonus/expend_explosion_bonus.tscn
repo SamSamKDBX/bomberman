@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://qns64bvsuw0b"]
+
+[ext_resource type="PackedScene" uid="uid://d0lp13vpxxqs6" path="res://assets/bonus/bonus.tscn" id="1_keweg"]
+
+[node name="ExpendExplosionBonus" unique_id=696669534 groups=["expend_explosion_bonus"] instance=ExtResource("1_keweg")]

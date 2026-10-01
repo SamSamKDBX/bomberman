@@ -18,7 +18,7 @@ height = 0.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_4nxta"]
 radius = 0.45
 
-[node name="Enemy" type="CharacterBody3D" unique_id=267945766 groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody3D" unique_id=267945766 groups=["enemy"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=997391486]
 shape = SubResource("CapsuleShape3D_yyc58")
