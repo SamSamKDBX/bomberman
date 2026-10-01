@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bsry6yspcshxh"]
 
-[ext_resource type="Script" uid="uid://h5kowwl8ucnm" path="res://assets/Boomb/bomb.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://dfus8vq2phlac" path="res://assets/Boomb/flame.tscn" id="2"]
+[ext_resource type="Script" uid="uid://h5kowwl8ucnm" path="res://assets/bomb/bomb.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dfus8vq2phlac" path="res://assets/bomb/flame.tscn" id="2"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_bomb"]
 radius = 0.4

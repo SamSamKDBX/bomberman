@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dfus8vq2phlac"]
 
-[ext_resource type="Script" uid="uid://bcoyrde4macr1" path="res://assets/Boomb/flame.gd" id="1"]
+[ext_resource type="Script" uid="uid://bcoyrde4macr1" path="res://assets/bomb/flame.gd" id="1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_flame"]
 size = Vector3(0.9, 0.9, 0.9)
