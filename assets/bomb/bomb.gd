@@ -6,7 +6,7 @@ class_name Bomb
 @export var fuse_time: float = 3.0          # Délai avant explosion (secondes)
 
 @export_group("Explosion")
-@export var explosion_range: int = 4     # Portée =  nb cases dans chaque direction
+@export var explosion_range: int = 1     # Portée =  nb cases dans chaque direction
 @export var cell_size: float = 1.0          # Taille d'une case de la grille (unités Godot)
 @export var explosion_scene: PackedScene    # Scène de flamme
 
