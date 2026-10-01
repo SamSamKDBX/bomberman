@@ -12,6 +12,7 @@ class_name Bomb
 
 @export_group("Physique")
 @export_flags_3d_physics var wall_collision_mask: int = 1
+@export_flags_3d_physics var breakable_wall_mask: int = 2
 # Layer physique sur laquelle se trouvent murs / blocs qui doivent
 # stopper la propagation de la flamme (aide IA)
 
@@ -76,7 +77,6 @@ func _get_flame_length(dir: Vector3) -> int:
 
 	var query := PhysicsShapeQueryParameters3D.new()
 	query.shape = box
-	query.collision_mask = wall_collision_mask
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
 	query.exclude = [body.get_rid()]
@@ -84,8 +84,16 @@ func _get_flame_length(dir: Vector3) -> int:
 	for i in range(1, explosion_range + 1):
 		var cell_pos := global_position + dir * cell_size * i
 		query.transform = Transform3D(Basis.IDENTITY, cell_pos)
+		
+		# Uniquement pour les murs incassable
+		query.collision_mask = wall_collision_mask
 		if not space_state.intersect_shape(query, 1).is_empty():
 			return i - 1   # la case i est bloquée, on s'arrête avant
+			
+		# Uniquement pour les murs cassables
+		query.collision_mask = breakable_wall_mask
+		if not space_state.intersect_shape(query, 1).is_empty():
+			return i
 
 	return explosion_range
 

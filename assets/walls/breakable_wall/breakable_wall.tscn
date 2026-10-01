@@ -18,6 +18,7 @@ uv1_scale = Vector3(2, 2, 2)
 size = Vector3(1.1, 1, 1.1)
 
 [node name="BreakableWall" unique_id=1452162110 instance=ExtResource("1_qfrfa")]
+collision_layer = 2
 
 [node name="Cube" parent="wall" parent_id_path=PackedInt32Array(930696903) index="0" unique_id=1527104214]
 surface_material_override/0 = SubResource("StandardMaterial3D_biq76")
@@ -32,7 +33,7 @@ shape = SubResource("BoxShape3D_joyu1")
 [node name="DamageControl" type="Node" parent="Controls" index="0" unique_id=441563787 node_paths=PackedStringArray("root")]
 script = ExtResource("2_joyu1")
 root = NodePath("../..")
-dangerousGroups = Array[String](["bomb"])
+dangerousGroups = Array[String](["flame"])
 
 [node name="BonusControl" type="Node" parent="Controls" index="1" unique_id=162321122 node_paths=PackedStringArray("body")]
 script = ExtResource("3_ijnh8")

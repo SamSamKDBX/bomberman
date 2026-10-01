@@ -14,7 +14,10 @@ emission_energy_multiplier = 2.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_flame"]
 size = Vector3(0.9, 0.9, 0.9)
 
-[node name="Flame" type="Node3D" unique_id=1336538495]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vv6hv"]
+size = Vector3(0.9, 0.9, 0.9)
+
+[node name="Flame" type="StaticBody3D" unique_id=1670101466 groups=["flame"]]
 script = ExtResource("1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1476052658]
@@ -22,6 +25,10 @@ mesh = SubResource("BoxMesh_flame")
 surface_material_override/0 = SubResource("StandardMaterial3D_flame")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2114064765]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1265897005]
 shape = SubResource("BoxShape3D_flame")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=625966926]
+shape = SubResource("BoxShape3D_vv6hv")

@@ -19,6 +19,8 @@ height = 0.5
 radius = 0.45
 
 [node name="Enemy" type="CharacterBody3D" unique_id=267945766 groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=997391486]
 shape = SubResource("CapsuleShape3D_yyc58")
@@ -33,15 +35,17 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -
 mesh = SubResource("CapsuleMesh_hx8jw")
 
 [node name="HitBox" type="Area3D" parent="." unique_id=225061705]
+collision_mask = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=84851031]
 shape = SubResource("SphereShape3D_4nxta")
 
 [node name="Controls" type="Node" parent="." unique_id=45214276]
 
-[node name="DamageControl" type="Node" parent="Controls" unique_id=1757132338]
+[node name="DamageControl" type="Node" parent="Controls" unique_id=1757132338 node_paths=PackedStringArray("root")]
 script = ExtResource("2_4nxta")
-dangerousGroups = Array[String](["bomb"])
+root = NodePath("../..")
+dangerousGroups = Array[String](["flame"])
 
 [node name="EnemyControl" type="Node" parent="Controls" unique_id=1606153514 node_paths=PackedStringArray("body", "timer", "eyes")]
 script = ExtResource("1_hx8jw")
@@ -52,4 +56,5 @@ eyes = NodePath("../../Body/eyes")
 [node name="Timer" type="Timer" parent="Controls" unique_id=1377370502]
 wait_time = 2.0
 
+[connection signal="body_entered" from="HitBox" to="Controls/DamageControl" method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Controls/Timer" to="Controls/EnemyControl" method="random_velocity"]
