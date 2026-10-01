@@ -4,24 +4,36 @@
 [ext_resource type="Script" uid="uid://mykgxswhsvhv" path="res://scripts/damage_control.gd" id="2_h6syq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dkgvm"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h6syq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i25i0"]
-height = 1.9903564
+radius = 0.25872993
+height = 0.51745987
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=259402759]
-transform = Transform3D(-0.012775475, 0, 0.9999184, 0, 1, 0, -0.9999184, 0, -0.012775475, 0, 0, 0)
-motion_mode = 1
-script = ExtResource("1_i25i0")
+slide_on_ceiling = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=397457242]
-transform = Transform3D(0.9998639, 0.015760738, -0.004823965, 0.015787257, -0.9998604, 0.005509682, -0.004736459, -0.0055851066, -0.9999734, 0.67137957, 1.1475904, -0.3548308)
+[node name="Node3D" type="Node3D" parent="." unique_id=601555752]
+transform = Transform3D(0.99999976, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0)
+
+[node name="body" type="MeshInstance3D" parent="Node3D" unique_id=397457242]
 mesh = SubResource("CapsuleMesh_dkgvm")
 
+[node name="ray" type="MeshInstance3D" parent="Node3D" unique_id=1042598455]
+transform = Transform3D(-1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, 0, 0.3, 0.4088987, 0, 0)
+mesh = SubResource("CylinderMesh_h6syq")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=435601228]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.714694, 1.0147004, -0.34894726)
 shape = SubResource("CapsuleShape3D_i25i0")
 
 [node name="Control" type="Node" parent="." unique_id=1221506887]
 
 [node name="DamageControl" type="Node" parent="Control" unique_id=279955163]
 script = ExtResource("2_h6syq")
+
+[node name="PlayerControl" type="Node" parent="Control" unique_id=191758333 node_paths=PackedStringArray("body")]
+script = ExtResource("1_i25i0")
+body = NodePath("../..")

@@ -17,11 +17,12 @@ transform = Transform3D(1, 0, 0, 0, 0.6558219, 0.75491565, 0, -0.75491565, 0.655
 light_energy = 1.713
 
 [node name="Map" parent="." unique_id=2044439977 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001916647, -0.00708127, -0.0011334121)
 
 [node name="CharacterBody3D" parent="." unique_id=259402759 instance=ExtResource("2_h2yge")]
-transform = Transform3D(-0.012775475, 0, 0.9999184, 0, 1, 0, -0.9999184, 0, -0.012775475, 0.40787494, -0.17084396, 0.49720132)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1713599154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
 
 [node name="Enemy" parent="Enemies" unique_id=267945766 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.015518, 0.5709889, 6.015256)
