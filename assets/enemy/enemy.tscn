@@ -47,7 +47,7 @@ script = ExtResource("2_4nxta")
 root = NodePath("../..")
 dangerousGroups = Array[String](["flame"])
 
-[node name="EnemyControl" type="Node" parent="Controls" unique_id=1606153514 node_paths=PackedStringArray("body", "timer", "eyes")]
+[node name="EnemyControl" type="Node" parent="Controls" unique_id=1606153514 node_paths=PackedStringArray("body", "timer", "eyes") groups=["Enemy"]]
 script = ExtResource("1_hx8jw")
 body = NodePath("../..")
 timer = NodePath("../Timer")
