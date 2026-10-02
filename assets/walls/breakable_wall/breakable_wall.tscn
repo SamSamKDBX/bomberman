@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://6ilqkjpnvh4f" path="res://assets/walls/normal_wall/normal_wall.tscn" id="1_qfrfa"]
 [ext_resource type="Script" uid="uid://mykgxswhsvhv" path="res://scripts/damage_control.gd" id="2_joyu1"]
+[ext_resource type="Script" uid="uid://c4vwkxkleqoov" path="res://assets/walls/breakable_wall/bonus_control.gd" id="3_ijnh8"]
+[ext_resource type="PackedScene" uid="uid://qns64bvsuw0b" path="res://assets/bonus/expend_explosion_bonus/expend_explosion_bonus.tscn" id="4_cow1x"]
+[ext_resource type="PackedScene" uid="uid://byvaoxx1bq1gs" path="res://assets/bonus/more_bombs_bonus/more_bombs_bonus.tscn" id="5_4xspe"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7giyn"]
 load_path = "res://.godot/imported/Dungeon_Wall_Albedo.jpg-43ec9a7755079c5b819f669c585ce590.s3tc.ctex"
@@ -15,20 +18,29 @@ uv1_scale = Vector3(2, 2, 2)
 size = Vector3(1.1, 1, 1.1)
 
 [node name="BreakableWall" unique_id=1452162110 instance=ExtResource("1_qfrfa")]
+collision_layer = 2
 
 [node name="Cube" parent="wall" parent_id_path=PackedInt32Array(930696903) index="0" unique_id=1527104214]
 surface_material_override/0 = SubResource("StandardMaterial3D_biq76")
 
-[node name="DamageControl" type="Node" parent="." index="2" unique_id=441563787 node_paths=PackedStringArray("root")]
-script = ExtResource("2_joyu1")
-root = NodePath("..")
-dangerousGroups = Array[String](["bomb"])
-
-[node name="Area3D" type="Area3D" parent="." index="3" unique_id=1565976039]
+[node name="Area3D" type="Area3D" parent="." index="2" unique_id=1565976039]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1118571323]
 shape = SubResource("BoxShape3D_joyu1")
 
-[connection signal="body_entered" from="Area3D" to="DamageControl" method="_on_area_3d_body_entered"]
+[node name="Controls" type="Node" parent="." index="3" unique_id=130740444]
+
+[node name="DamageControl" type="Node" parent="Controls" index="0" unique_id=441563787 node_paths=PackedStringArray("root")]
+script = ExtResource("2_joyu1")
+root = NodePath("../..")
+dangerousGroups = Array[String](["flame"])
+
+[node name="BonusControl" type="Node" parent="Controls" index="1" unique_id=162321122 node_paths=PackedStringArray("body")]
+script = ExtResource("3_ijnh8")
+body = NodePath("../..")
+bonusPrefabs = Array[PackedScene]([ExtResource("5_4xspe"), ExtResource("4_cow1x")])
+
+[connection signal="body_entered" from="Area3D" to="Controls/DamageControl" method="_on_area_3d_body_entered"]
+[connection signal="death" from="Controls/DamageControl" to="Controls/BonusControl" method="_on_break"]
 
 [editable path="wall"]

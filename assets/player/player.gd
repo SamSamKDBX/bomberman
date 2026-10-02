@@ -1,4 +1,3 @@
-class_name Player
 extends Node
 
 @export var body: CharacterBody3D
@@ -17,7 +16,9 @@ var collideBottom: bool = false
 var collideTop: bool = false
 var collideWest: bool = false
 var collideEast: bool = false
-
+var bomb = preload("res://assets/bomb/bomb.tscn")
+var bomb_instance
+var addingBomb: bool
 
 func _ready() -> void:
 	body.position = Vector3.ZERO
@@ -57,40 +58,72 @@ func change_direction():
 	body.velocity = Vector3.ZERO
 	if Input.is_action_just_pressed("p1_right"):	
 		if(!collideEast):
-			nextStop = Vector3.ZERO
-			body.velocity.x = speed
-			nextStop.x = body.position.x + step
-			orientation = "x+"
-			collideBottom = false
-			collideTop = false	
-			collideWest = false
+			if (addingBomb):
+				bomb_instance.position.x = body.position.x +1
+				bomb_instance.position.y = body.position.y
+				bomb_instance.position.z = body.position.z
+				get_parent().add_child(bomb_instance)
+				addingBomb = false
+			else:
+				nextStop = Vector3.ZERO
+				body.velocity.x = speed
+				nextStop.x = body.position.x + step
+				orientation = "x+"
+				collideBottom = false
+				collideTop = false	
+				collideWest = false
 	elif Input.is_action_just_pressed("p1_left"):
 		if(!collideWest):
-			nextStop = Vector3.ZERO
-			nextStop.x = body.position.x - step
-			body.velocity.x = -speed
-			orientation = "x-"
-			collideBottom = false
-			collideTop = false
-			collideEast = false
+			if (addingBomb):
+				bomb_instance.position.x = body.position.x - 1
+				bomb_instance.position.y = body.position.y
+				bomb_instance.position.z = body.position.z
+				get_parent().add_child(bomb_instance)
+				addingBomb = false
+			else:
+				nextStop = Vector3.ZERO
+				nextStop.x = body.position.x - step
+				body.velocity.x = -speed
+				orientation = "x-"
+				collideBottom = false
+				collideTop = false
+				collideEast = false
 	elif Input.is_action_just_pressed("p1_backward"):
 		if (!collideBottom):
-			nextStop = Vector3.ZERO
-			body.velocity.z = speed
-			nextStop.z = body.position.z + step
-			orientation = "z+"
-			collideTop = false
-			collideWest = false
-			collideEast = false
+			if (addingBomb):
+				bomb_instance.position.x = body.position.x
+				bomb_instance.position.y = body.position.y
+				bomb_instance.position.z = body.position.z +1
+				get_parent().add_child(bomb_instance)
+				addingBomb = false
+			else:
+				nextStop = Vector3.ZERO
+				body.velocity.z = speed
+				nextStop.z = body.position.z + step
+				orientation = "z+"
+				collideTop = false
+				collideWest = false
+				collideEast = false
 	elif Input.is_action_just_pressed("p1_forward"):		
 		if(!collideTop):
-			nextStop = Vector3.ZERO
-			body.velocity.z = -speed
-			nextStop.z = body.position.z - step
-			orientation = "z-"
-			collideBottom = false
-			collideWest = false
-			collideEast = false
+			if (addingBomb):
+				bomb_instance.position.x = body.position.x 
+				bomb_instance.position.y = body.position.y
+				bomb_instance.position.z = body.position.z -1
+				get_parent().add_child(bomb_instance)
+				addingBomb = false
+			else:
+				nextStop = Vector3.ZERO
+				body.velocity.z = -speed
+				nextStop.z = body.position.z - step
+				orientation = "z-"
+				collideBottom = false
+				collideWest = false
+				collideEast = false
+	elif Input.is_action_just_pressed("drop_bomb"):
+		bomb_instance = bomb.instantiate()
+		addingBomb = true
+		
 
 
 

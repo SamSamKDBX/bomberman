@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://0keaviwocn6a"]
+
+[ext_resource type="Script" uid="uid://chl6ubh7n0fwu" path="res://assets/handlers/bomb_handler.gd" id="1_d22s5"]
+[ext_resource type="Script" uid="uid://cmvodclo7fbm1" path="res://assets/handlers/bonus_handler.gd" id="1_lw3qo"]
+[ext_resource type="PackedScene" uid="uid://bsry6yspcshxh" path="res://assets/bomb/bomb.tscn" id="2_lw3qo"]
+
+[node name="PlayerHandlers" type="Node" unique_id=1482632428]
+
+[node name="BonusHandler" type="Node" parent="." unique_id=2041976393 node_paths=PackedStringArray("bomb_handler")]
+script = ExtResource("1_lw3qo")
+bomb_handler = NodePath("../BombHandler")
+
+[node name="BombHandler" type="Node" parent="." unique_id=2026837096]
+script = ExtResource("1_d22s5")
+bomb_prefab = ExtResource("2_lw3qo")
