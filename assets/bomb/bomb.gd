@@ -31,6 +31,8 @@ func _ready() -> void:
 	fuse_timer.timeout.connect(_on_fuse_timeout)
 	fuse_timer.start()
 
+func _physics_process(delta: float) -> void:
+	print("bomb", position)
 
 func _on_fuse_timeout() -> void:
 	explode()
@@ -38,6 +40,7 @@ func _on_fuse_timeout() -> void:
 
 ## Peut aussi être appelé manuellemen (réaction en chaîne avec une autre bombe qui explose à côté)
 func explode() -> void:
+	print(explosion_range)
 	if _has_exploded:
 		return
 	_has_exploded = true
