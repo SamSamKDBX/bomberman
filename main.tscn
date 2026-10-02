@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cg8goaa6txg5v" path="res://assets/map/map.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://biy61apgnwise" path="res://assets/enemy/enemy.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://3kq7foistpor" path="res://assets/player/player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bsry6yspcshxh" path="res://assets/bomb/bomb.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node3D" unique_id=1620750783]
 
@@ -21,6 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001916647, -0.00708127, -0
 
 [node name="CharacterBody3D" parent="." unique_id=259402759 instance=ExtResource("2_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 16
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1713599154]
 
@@ -32,3 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0388188, 0.5709889, 4.01525
 
 [node name="Enemy8" parent="Enemies" unique_id=688344257 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9611816, 0.5709889, 0.052428722)
+
+[node name="Bomb" parent="." unique_id=2120172338 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 4)

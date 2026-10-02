@@ -19,8 +19,8 @@ height = 0.5
 radius = 0.45
 
 [node name="Enemy" type="CharacterBody3D" unique_id=267945766 groups=["enemy"]]
-collision_layer = 4
-collision_mask = 3
+collision_layer = 8
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=997391486]
 shape = SubResource("CapsuleShape3D_yyc58")
@@ -35,7 +35,7 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -
 mesh = SubResource("CapsuleMesh_hx8jw")
 
 [node name="HitBox" type="Area3D" parent="." unique_id=225061705]
-collision_mask = 9
+collision_mask = 67
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=84851031]
 shape = SubResource("SphereShape3D_4nxta")

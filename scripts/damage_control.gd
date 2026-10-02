@@ -11,6 +11,7 @@ func _process(_delta: float) -> void:
 		_winning()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	print("player collision with:", body)
 	for dangerousGroup in dangerousGroups:
 		if body.is_in_group(dangerousGroup):
 			_take_damage()
@@ -24,8 +25,9 @@ func _take_damage():
 func _death():
 	if root.is_in_group("player"):
 		_loosing()
-	death.emit()
-	root.queue_free()
+	else:
+		death.emit()
+		root.queue_free()
 	
 func _loosing():
 	get_tree().change_scene_to_file("res://scenes/loosing_menu/loosing_menu.tscn")

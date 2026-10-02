@@ -19,12 +19,14 @@ radius = 0.4
 script = ExtResource("1")
 explosion_scene = ExtResource("2")
 wall_collision_mask = 3
+breakable_wall_mask = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=716515621]
 mesh = SubResource("SphereMesh_bomb")
 surface_material_override/0 = SubResource("StandardMaterial3D_bomb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1128757822]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=729250174]
 shape = SubResource("SphereShape3D_bomb")

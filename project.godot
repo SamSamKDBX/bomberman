@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 enemy=""
 bomb=""
 flame=""
+player=""
+more_bomb_bonus=""
 
 [input]
 

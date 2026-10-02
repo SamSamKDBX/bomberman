@@ -12,7 +12,7 @@ class_name Bomb
 
 @export_group("Physique")
 @export_flags_3d_physics var wall_collision_mask: int = 1
-@export_flags_3d_physics var breakable_wall_mask: int = 2
+@export_flags_3d_physics var breakable_wall_mask: int = 3
 # Layer physique sur laquelle se trouvent murs / blocs qui doivent
 # stopper la propagation de la flamme (aide IA)
 
@@ -31,6 +31,8 @@ func _ready() -> void:
 	fuse_timer.timeout.connect(_on_fuse_timeout)
 	fuse_timer.start()
 
+func _physics_process(delta: float) -> void:
+	print("bomb", position)
 
 func _on_fuse_timeout() -> void:
 	explode()
@@ -38,6 +40,7 @@ func _on_fuse_timeout() -> void:
 
 ## Peut aussi être appelé manuellemen (réaction en chaîne avec une autre bombe qui explose à côté)
 func explode() -> void:
+	print(explosion_range)
 	if _has_exploded:
 		return
 	_has_exploded = true
@@ -87,7 +90,9 @@ func _get_flame_length(dir: Vector3) -> int:
 		
 		# Uniquement pour les murs incassable
 		query.collision_mask = wall_collision_mask
-		if not space_state.intersect_shape(query, 1).is_empty():
+		var result = space_state.intersect_shape(query, 1)
+		if not result.is_empty():
+			print("Bloqué par : ", result[0].collider.name)
 			return i - 1   # la case i est bloquée, on s'arrête avant
 			
 		# Uniquement pour les murs cassables
