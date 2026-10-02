@@ -11,7 +11,7 @@ size = Vector3(0.4, 0.4, 0.4)
 size = Vector3(0.4, 0.4, 0.4)
 
 [node name="Bonus" type="StaticBody3D" unique_id=696669534]
-collision_layer = 8
+collision_layer = 32
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=391811779]
 mesh = SubResource("BoxMesh_h2yge")

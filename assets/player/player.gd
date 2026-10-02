@@ -35,19 +35,7 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	# Si on est arrivé à la prochaine étape
-
-	print("player", body.position)
 	if orientation[0] == "x":
-		# FOR DEBUGING PURPOSE
-		#
-		#print("---------")
-		#print("1")
-		#print("centerDirected : ", centerDirected)
-		#print("body.position : ", body.position)
-		#print("nextStop : ", nextStop)
-		#print("orientation : ", orientation)
-		#print("body.velocity : ", body.velocity)
-		
 		if is_equal_approx(body.position.x, nextStop.x):
 			# Calculer la nouvelle direction
 			change_direction()
@@ -68,8 +56,9 @@ func change_direction():
 		if(!collideEast):
 			if (addingBomb):
 				var bomb_instance = bomb_instances[-1]
-				#bomb_instance.position = body.position
-				#b  omb_instance.position.x += 1
+				bomb_instance.position.y = 1
+				bomb_instance.position.z = body.position.z
+				bomb_instance.position.x = body.position.x + 1
 				get_parent().add_child(bomb_instance)
 				addingBomb = false
 			else:
@@ -84,8 +73,9 @@ func change_direction():
 		if(!collideWest):
 			if (addingBomb):
 				var bomb_instance = bomb_instances[-1]
-				#bomb_instance.position = body.position
-				#bomb_instance.position.x -= 1
+				bomb_instance.position.y = 1
+				bomb_instance.position.z = body.position.z
+				bomb_instance.position.x = body.position.x - 1
 				get_parent().add_child(bomb_instance)
 				addingBomb = false
 			else:
@@ -100,8 +90,9 @@ func change_direction():
 		if (!collideBottom):
 			if (addingBomb):
 				var bomb_instance = bomb_instances[-1]
-				#bomb_instance.position = body.position
-				#bomb_instance.position.z += 1
+				bomb_instance.position.y = 1
+				bomb_instance.position.x = body.position.x
+				bomb_instance.position.z = body.position.z + 1
 				get_parent().add_child(bomb_instance)
 				addingBomb = false
 			else:
@@ -116,8 +107,9 @@ func change_direction():
 		if(!collideTop):
 			if (addingBomb):
 				var bomb_instance = bomb_instances[-1]
-				#bomb_instance.position = body.position
-				#bomb_instance.position.z -= 1
+				bomb_instance.position.y = 1
+				bomb_instance.position.x = body.position.x
+				bomb_instance.position.z = body.position.z - 1
 				get_parent().add_child(bomb_instance)
 				addingBomb = false
 			else:
@@ -133,13 +125,15 @@ func change_direction():
 		Input.is_action_just_pressed("drop_bomb") 
 		and bomb_instances.size() < max_bomb_instances
 	):
-		var bomb: Bomb = bomb_prefab.instantiate()
-		bomb.explosion_range = explosion_range
-		bomb.exploded.connect(_remove_bomb)
-		bomb.position = body.position
-		bomb.position.y = 1
-		bomb_instances.append(bomb)
-		addingBomb = true
+		_drop_bomb()
+
+func _drop_bomb():
+	var bomb: Bomb = bomb_prefab.instantiate()
+	bomb.explosion_range = explosion_range
+	bomb.exploded.connect(_remove_bomb)
+	bomb_instances.append(bomb)
+	addingBomb = true
+	
 
 func _remove_bomb(bomb: Bomb):
 	bomb_instances.remove_at(0)
@@ -171,5 +165,7 @@ func add_max_bomb():
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("expend_explosion_bonus"):
 		add_range()
+		body.queue_free()
 	elif body.is_in_group("more_bomb_bonus"):
 		add_max_bomb()
+		body.queue_free()

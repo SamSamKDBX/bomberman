@@ -22,6 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001916647, -0.00708127, -0
 
 [node name="CharacterBody3D" parent="." unique_id=259402759 instance=ExtResource("2_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 16
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1713599154]
 
