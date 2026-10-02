@@ -19,6 +19,7 @@ radius = 0.4
 script = ExtResource("1")
 explosion_scene = ExtResource("2")
 wall_collision_mask = 3
+breakable_wall_mask = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=716515621]
 mesh = SubResource("SphereMesh_bomb")

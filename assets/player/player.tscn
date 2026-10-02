@@ -25,7 +25,7 @@ radius = 0.4
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d5dr7"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=259402759]
-collision_mask = 3
+collision_mask = 7
 slide_on_ceiling = false
 
 [node name="Node3D" type="Node3D" parent="." unique_id=601555752]
