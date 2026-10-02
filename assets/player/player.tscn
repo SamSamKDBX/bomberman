@@ -7,17 +7,17 @@
 radius = 0.25
 height = 0.5
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_h6syq"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_v2miy"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ouxva"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_d5dr7"]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i25i0"]
 radius = 0.25872993
 height = 0.51745987
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h6syq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v2miy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ouxva"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d5dr7"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=259402759]
 slide_on_ceiling = false
@@ -27,22 +27,6 @@ transform = Transform3D(0.99999976, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000002, 0, 0
 
 [node name="body" type="MeshInstance3D" parent="Node3D" unique_id=397457242]
 mesh = SubResource("CapsuleMesh_dkgvm")
-
-[node name="ray_north" type="MeshInstance3D" parent="Node3D" unique_id=1042598455]
-transform = Transform3D(-1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, 0, 0.3, 0.3, 0, 0)
-mesh = SubResource("CylinderMesh_h6syq")
-
-[node name="ray_south" type="MeshInstance3D" parent="Node3D" unique_id=851391943]
-transform = Transform3D(-1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, 0, 0.3, -0.3, 0, 0)
-mesh = SubResource("CylinderMesh_v2miy")
-
-[node name="ray_east" type="MeshInstance3D" parent="Node3D" unique_id=1959979434]
-transform = Transform3D(0.3, 0, 0, 0, -1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, 0.3)
-mesh = SubResource("CylinderMesh_ouxva")
-
-[node name="ray_west" type="MeshInstance3D" parent="Node3D" unique_id=1624344582]
-transform = Transform3D(0.3, 0, 0, 0, -1.3113417e-08, -0.3, 0, 0.3, -1.3113417e-08, 0, 0, -0.3)
-mesh = SubResource("CylinderMesh_d5dr7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=435601228]
 shape = SubResource("CapsuleShape3D_i25i0")
@@ -55,4 +39,35 @@ script = ExtResource("2_h6syq")
 [node name="PlayerControl" type="Node" parent="Control" unique_id=191758333 node_paths=PackedStringArray("body", "ray_north")]
 script = ExtResource("1_i25i0")
 body = NodePath("../..")
-ray_north = NodePath("../../Node3D/ray_north")
+ray_north = NodePath("../../ray_south/CollisionShape3D2")
+
+[node name="ray_south" type="Area3D" parent="." unique_id=2093518881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98051023, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ray_south" unique_id=155785480]
+transform = Transform3D(0.49999988, 0, 0, 0, -2.1855696e-08, -0.50000006, 0, 0.5000001, -2.18557e-08, -0.98051023, 0, 0.20000005)
+shape = SubResource("CylinderShape3D_h6syq")
+
+[node name="ray_north" type="Area3D" parent="." unique_id=91025581]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ray_north" unique_id=450913590]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, -0.2)
+shape = SubResource("CylinderShape3D_v2miy")
+
+[node name="ray_east" type="Area3D" parent="." unique_id=2047869439]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ray_east" unique_id=1353446665]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0.2, 0, 0)
+shape = SubResource("CylinderShape3D_ouxva")
+
+[node name="ray_west" type="Area3D" parent="." unique_id=1232795277]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ray_west" unique_id=1983224948]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, -0.2, 0, 0)
+shape = SubResource("CylinderShape3D_d5dr7")
+
+[connection signal="input_event" from="." to="Control/PlayerControl" method="_on_character_body_3d_input_event"]
+[connection signal="body_shape_entered" from="ray_south" to="Control/PlayerControl" method="_on_ray_south_body_shape_entered"]
+[connection signal="body_shape_entered" from="ray_north" to="Control/PlayerControl" method="_on_ray_north_body_shape_entered"]
+[connection signal="body_shape_entered" from="ray_east" to="Control/PlayerControl" method="_on_ray_east_body_shape_entered"]
+[connection signal="body_shape_entered" from="ray_west" to="Control/PlayerControl" method="_on_ray_west_body_shape_entered"]
