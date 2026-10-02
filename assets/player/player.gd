@@ -5,6 +5,12 @@ extends Node
 @export var ray_north: CollisionShape3D
 
 
+@export var bomb_prefab: PackedScene
+var explosion_range: int = 1
+var max_bomb_instances: int = 1
+@export var bonus_area: Area3D
+
+
 
 var rng = RandomNumberGenerator.new()
 var nextStop: Vector3
@@ -17,13 +23,14 @@ var collideTop: bool = false
 var collideWest: bool = false
 var collideEast: bool = false
 var bomb = preload("res://assets/bomb/bomb.tscn")
-var bomb_instance
+var bomb_instances: Array[Bomb]
 var addingBomb: bool
 
 func _ready() -> void:
 	body.position = Vector3.ZERO
 	nextStop = body.position
 	collideEast = false
+	bonus_area.body_entered.connect(_on_body_entered)
 	
 	
 func _physics_process(delta: float) -> void:
@@ -59,6 +66,7 @@ func change_direction():
 	if Input.is_action_just_pressed("p1_right"):	
 		if(!collideEast):
 			if (addingBomb):
+				var bomb_instance = bomb_instances[-1]
 				bomb_instance.position.x = body.position.x +1
 				bomb_instance.position.y = body.position.y
 				bomb_instance.position.z = body.position.z
@@ -75,6 +83,7 @@ func change_direction():
 	elif Input.is_action_just_pressed("p1_left"):
 		if(!collideWest):
 			if (addingBomb):
+				var bomb_instance = bomb_instances[-1]
 				bomb_instance.position.x = body.position.x - 1
 				bomb_instance.position.y = body.position.y
 				bomb_instance.position.z = body.position.z
@@ -91,6 +100,7 @@ func change_direction():
 	elif Input.is_action_just_pressed("p1_backward"):
 		if (!collideBottom):
 			if (addingBomb):
+				var bomb_instance = bomb_instances[-1]
 				bomb_instance.position.x = body.position.x
 				bomb_instance.position.y = body.position.y
 				bomb_instance.position.z = body.position.z +1
@@ -107,6 +117,7 @@ func change_direction():
 	elif Input.is_action_just_pressed("p1_forward"):		
 		if(!collideTop):
 			if (addingBomb):
+				var bomb_instance = bomb_instances[-1]
 				bomb_instance.position.x = body.position.x 
 				bomb_instance.position.y = body.position.y
 				bomb_instance.position.z = body.position.z -1
@@ -120,12 +131,19 @@ func change_direction():
 				collideBottom = false
 				collideWest = false
 				collideEast = false
-	elif Input.is_action_just_pressed("drop_bomb"):
-		bomb_instance = bomb.instantiate()
+				
+	if (
+		Input.is_action_just_pressed("drop_bomb") 
+		and bomb_instances.size() < max_bomb_instances
+	):
+		var bomb: Bomb = bomb_prefab.instantiate()
+		bomb.explosion_range = explosion_range
+		bomb.exploded.connect(_remove_bomb)
+		bomb_instances.append(bomb)
 		addingBomb = true
-		
 
-
+func _remove_bomb(bomb: Bomb):
+	bomb_instances.remove_at(0)
 
 func _on_ray_north_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
 	if (body.name != "Ground" and body.name != "CharacterBody3D"):	
@@ -144,3 +162,15 @@ func _on_ray_west_body_shape_entered(body_rid: RID, body: Node3D, body_shape_ind
 func _on_ray_east_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
 	if (body.name != "Ground" and body.name != "CharacterBody3D"):
 		collideEast = true
+
+func add_range():
+	explosion_range += 1
+	
+func add_max_bomb():
+	max_bomb_instances += 1
+
+func _on_body_entered(body: Node3D):
+	if body.is_in_group("expend_explosion_bonus"):
+		add_range()
+	elif body.is_in_group("more_bomb_bonus"):
+		add_max_bomb()

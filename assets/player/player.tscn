@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bwuy3pr7000at" path="res://assets/player/player.gd" id="1_i25i0"]
 [ext_resource type="Script" uid="uid://mykgxswhsvhv" path="res://scripts/damage_control.gd" id="2_h6syq"]
+[ext_resource type="PackedScene" uid="uid://bsry6yspcshxh" path="res://assets/bomb/bomb.tscn" id="3_ouxva"]
+[ext_resource type="PackedScene" uid="uid://0keaviwocn6a" path="res://assets/handlers/player_handlers.tscn" id="3_v2miy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dkgvm"]
 radius = 0.25
@@ -10,6 +12,9 @@ height = 0.5
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i25i0"]
 radius = 0.25872993
 height = 0.51745987
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v2miy"]
+radius = 0.4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h6syq"]
 
@@ -20,6 +25,7 @@ height = 0.51745987
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d5dr7"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=259402759]
+collision_mask = 3
 slide_on_ceiling = false
 
 [node name="Node3D" type="Node3D" parent="." unique_id=601555752]
@@ -31,36 +37,59 @@ mesh = SubResource("CapsuleMesh_dkgvm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=435601228]
 shape = SubResource("CapsuleShape3D_i25i0")
 
+[node name="BonusArea" type="Area3D" parent="." unique_id=2049067614]
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BonusArea" unique_id=1075852415]
+shape = SubResource("SphereShape3D_v2miy")
+
 [node name="Control" type="Node" parent="." unique_id=1221506887]
 
-[node name="DamageControl" type="Node" parent="Control" unique_id=279955163]
+[node name="DamageControl" type="Node" parent="Control" unique_id=279955163 node_paths=PackedStringArray("root")]
 script = ExtResource("2_h6syq")
+root = NodePath("../..")
+dangerousGroups = Array[String](["flame", "enemy"])
 
-[node name="PlayerControl" type="Node" parent="Control" unique_id=191758333 node_paths=PackedStringArray("body", "ray_north")]
+[node name="PlayerControl" type="Node" parent="Control" unique_id=191758333 node_paths=PackedStringArray("body", "ray_north", "bonus_area")]
 script = ExtResource("1_i25i0")
 body = NodePath("../..")
 ray_north = NodePath("../../ray_south/CollisionShape3D2")
+bomb_prefab = ExtResource("3_ouxva")
+bonus_area = NodePath("../../BonusArea")
+
+[node name="PlayerHandlers" parent="Control" unique_id=1482632428 instance=ExtResource("3_v2miy")]
+
+[node name="BonusHandler" parent="Control/PlayerHandlers" index="0" unique_id=2041976393 node_paths=PackedStringArray("bonus_area")]
+bonus_area = NodePath("../../../BonusArea")
 
 [node name="ray_south" type="Area3D" parent="." unique_id=2093518881]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98051023, 0, 0)
+visible = false
+collision_mask = 3
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="ray_south" unique_id=155785480]
 transform = Transform3D(0.49999988, 0, 0, 0, -2.1855696e-08, -0.50000006, 0, 0.5000001, -2.18557e-08, -0.98051023, 0, 0.20000005)
 shape = SubResource("CylinderShape3D_h6syq")
 
 [node name="ray_north" type="Area3D" parent="." unique_id=91025581]
+visible = false
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ray_north" unique_id=450913590]
 transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, -0.2)
 shape = SubResource("CylinderShape3D_v2miy")
 
 [node name="ray_east" type="Area3D" parent="." unique_id=2047869439]
+visible = false
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ray_east" unique_id=1353446665]
 transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0.2, 0, 0)
 shape = SubResource("CylinderShape3D_ouxva")
 
 [node name="ray_west" type="Area3D" parent="." unique_id=1232795277]
+visible = false
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ray_west" unique_id=1983224948]
 transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, -0.2, 0, 0)
@@ -71,3 +100,5 @@ shape = SubResource("CylinderShape3D_d5dr7")
 [connection signal="body_shape_entered" from="ray_north" to="Control/PlayerControl" method="_on_ray_north_body_shape_entered"]
 [connection signal="body_shape_entered" from="ray_east" to="Control/PlayerControl" method="_on_ray_east_body_shape_entered"]
 [connection signal="body_shape_entered" from="ray_west" to="Control/PlayerControl" method="_on_ray_west_body_shape_entered"]
+
+[editable path="Control/PlayerHandlers"]
