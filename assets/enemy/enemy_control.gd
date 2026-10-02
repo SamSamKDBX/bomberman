@@ -14,7 +14,7 @@ func _ready() -> void:
 	nextStop = body.position
 	timer.start()
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Si on est arrivé à la prochaine étape
 	if body.position == nextStop:
 		# Calculer la nouvelle direction

@@ -3,6 +3,12 @@ extends Node
 @export var root: Node3D
 @export var dangerousGroups: Array[String]
 @export var hp: int = 1
+signal death
+
+func _process(_delta: float) -> void:
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	if enemies.is_empty():
+		_winning()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	for dangerousGroup in dangerousGroups:
@@ -16,10 +22,9 @@ func _take_damage():
 		_death()
 
 func _death():
-	if get_tree().get_nodes_in_group("enemy").is_empty():
-		_winning()
-	elif root.is_in_group("player"):
+	if root.is_in_group("player"):
 		_loosing()
+	death.emit()
 	root.queue_free()
 	
 func _loosing():

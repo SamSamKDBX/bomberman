@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bsry6yspcshxh"]
+
+[ext_resource type="Script" uid="uid://h5kowwl8ucnm" path="res://assets/bomb/bomb.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dfus8vq2phlac" path="res://assets/bomb/flame.tscn" id="2"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_bomb"]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bomb"]
+albedo_color = Color(0.05, 0.05, 0.05, 1)
+metallic = 0.3
+roughness = 0.55
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bomb"]
+radius = 0.4
+
+[node name="Bomb" type="Node3D" unique_id=2120172338]
+script = ExtResource("1")
+explosion_scene = ExtResource("2")
+wall_collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=716515621]
+mesh = SubResource("SphereMesh_bomb")
+surface_material_override/0 = SubResource("StandardMaterial3D_bomb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1128757822]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=729250174]
+shape = SubResource("SphereShape3D_bomb")
+
+[node name="FuseTimer" type="Timer" parent="." unique_id=1437810210]
+wait_time = 3.0
+one_shot = true
