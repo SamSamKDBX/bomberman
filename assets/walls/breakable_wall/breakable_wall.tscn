@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://dsp45hc7fgecx"]
 
 [ext_resource type="PackedScene" uid="uid://6ilqkjpnvh4f" path="res://assets/walls/normal_wall/normal_wall.tscn" id="1_qfrfa"]
+[ext_resource type="Texture2D" uid="uid://cydm1vo6u1ky" path="res://assets/walls/textures/Dungeon_Wall_A0.png" id="2_4xspe"]
 [ext_resource type="Script" uid="uid://mykgxswhsvhv" path="res://scripts/damage_control.gd" id="2_joyu1"]
 [ext_resource type="Script" uid="uid://c4vwkxkleqoov" path="res://assets/walls/breakable_wall/bonus_control.gd" id="3_ijnh8"]
 [ext_resource type="PackedScene" uid="uid://qns64bvsuw0b" path="res://assets/bonus/expend_explosion_bonus/expend_explosion_bonus.tscn" id="4_cow1x"]
 [ext_resource type="PackedScene" uid="uid://byvaoxx1bq1gs" path="res://assets/bonus/more_bombs_bonus/more_bombs_bonus.tscn" id="5_4xspe"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7giyn"]
-load_path = "res://.godot/imported/Dungeon_Wall_Albedo.jpg-43ec9a7755079c5b819f669c585ce590.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biq76"]
-albedo_color = Color(1, 0.30588236, 0.3137255, 1)
-albedo_texture = SubResource("CompressedTexture2D_7giyn")
+albedo_texture = ExtResource("2_4xspe")
 uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_joyu1"]
@@ -20,7 +17,7 @@ size = Vector3(1.1, 1, 1.1)
 [node name="BreakableWall" unique_id=1452162110 instance=ExtResource("1_qfrfa")]
 collision_layer = 4
 
-[node name="Cube" parent="wall" parent_id_path=PackedInt32Array(930696903) index="0" unique_id=1527104214]
+[node name="Cube" parent="wall" parent_id_path=PackedInt32Array(930696903) index="0" unique_id=1553014097]
 surface_material_override/0 = SubResource("StandardMaterial3D_biq76")
 
 [node name="Area3D" type="Area3D" parent="." index="2" unique_id=1565976039]

@@ -2,6 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://6ilqkjpnvh4f" path="res://assets/walls/normal_wall/normal_wall.tscn" id="2_5n5go"]
 [ext_resource type="PackedScene" uid="uid://dsp45hc7fgecx" path="res://assets/walls/breakable_wall/breakable_wall.tscn" id="2_yyc58"]
+[ext_resource type="Texture2D" uid="uid://bi0jhgkrutoxs" path="res://assets/walls/textures/rocky_terrain_diff_4k.jpg" id="3_5n5go"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4dpt"]
+albedo_texture = ExtResource("3_5n5go")
 
 [sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
 size = Vector3(19, 0.1, 19)
@@ -523,6 +527,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1115771555]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1747671367]
+material_override = SubResource("StandardMaterial3D_l4dpt")
 mesh = SubResource("BoxMesh_7dm0k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=2076897011]
